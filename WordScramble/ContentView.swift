@@ -195,6 +195,13 @@ struct ContentView: View {
 //                .onAppear(perform: startGame)
 //            }
         
+        List{
+            Text ("zahid khan")
+        }
+        
+        
+        
+        
         
         NavigationStack {
             List {
