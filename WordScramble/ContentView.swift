@@ -16,6 +16,9 @@ struct ContentView: View {
     
     
     var names = [ "zahid", "ali", "zain"]
+    var integer = [1,2,3,4,5]
+    
+    
     var body: some View {
          
         List {
@@ -62,6 +65,10 @@ struct ContentView: View {
             Text ($0)
         }
         .listStyle(.sidebar)
+        
+        List (integer, id: \.self){
+            Text("row: \($0)")
+        }
         
         
         //        List {
