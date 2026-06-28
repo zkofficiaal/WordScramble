@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var usedWords = [String]()
+    @State private var rootWord: String = ""
+    @State private var newWord: String = ""
+    
     var name = ["zahid", "zain", "safwan"]
     
     
