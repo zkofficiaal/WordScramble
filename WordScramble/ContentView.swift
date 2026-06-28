@@ -26,12 +26,37 @@ struct ContentView: View {
                 
                 Section {
                     ForEach (usedWords, id: \.self) { word in
-                        Text (word)
+                        HStack {
+                            Image (systemName:"\(word.count).circle")
+                            Text(word)
+                        }
                     }
                 }
             }
             .navigationTitle(rootWord)
+            .onSubmit {
+                addNewWords()
+            }
+            .textInputAutocapitalization(.never)
         }
+    }
+    
+    func addNewWords(){
+        let answer = newWord.lowercased( ).trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard answer.count > 0 else { return }
+        
+        withAnimation {
+            usedWords.insert(answer, at: 0)
+        }
+        
+        newWord = ""
+    }
+    
+    
+}
+
+
         
         
 //        List {
@@ -168,8 +193,7 @@ struct ContentView: View {
 //        let isGood = misspelledRange.location == NSNotFound
         
         
-    }
-}
+
 
 #Preview {
     ContentView()
