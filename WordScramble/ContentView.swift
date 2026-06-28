@@ -18,6 +18,22 @@ struct ContentView: View {
     
     var body: some View {
         
+        NavigationStack {
+            List {
+                Section {
+                    TextField("Enter your Word: ", text: $newWord)
+                }
+                
+                Section {
+                    ForEach (usedWords, id: \.self) { word in
+                        Text (word)
+                    }
+                }
+            }
+            .navigationTitle(rootWord)
+        }
+        
+        
 //        List {
 //            ForEach(0..<5) {
 //                Text("Dynamic row \($0)")
@@ -119,40 +135,40 @@ struct ContentView: View {
 //            Text ("\($0)")
 //        }
         
-        if let fileURL = Bundle.main.url(forResource: "start", withExtension: "txt"),
-           let fileContent = try? String(contentsOf: fileURL, encoding: .utf8) {
-            Text(fileContent)
-        } else {
-            Text("Unable to load start.txt")
-        }
+//        if let fileURL = Bundle.main.url(forResource: "start", withExtension: "txt"),
+//           let fileContent = try? String(contentsOf: fileURL, encoding: .utf8) {
+//            Text(fileContent)
+//        } else {
+//            Text("Unable to load start.txt")
+//        }
+//        
+//        let input = "a b c"
+//        let words = input.components(separatedBy: " ")
+//        
+//        let input1 = """
+//            a
+//            b
+//            c
+//            """
+//        let letters = input1.components(separatedBy: "\n")
+//        let letter = letters.randomElement()
+//        
+//        
+//        let trimmed = input1.trimmingCharacters(in: .whitespacesAndNewlines)
+//        
+//        
+//        
+//        let word = "Swift"
+//        let checker = UITextChecker()
+//        
+//        let range = NSRange(location: 0, length: word.utf16.count)
+//        
+//        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+//        
+//        let isGood = misspelledRange.location == NSNotFound
         
-        let input = "a b c"
-        let words = input.components(separatedBy: " ")
         
-        let input1 = """
-            a
-            b
-            c
-            """
-        let letters = input1.components(separatedBy: "\n")
-        let letter = letters.randomElement()
-        
-        
-        let trimmed = input1.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        
-        
-        let word = "Swift"
-        let checker = UITextChecker()
-        
-        let range = NSRange(location: 0, length: word.utf16.count)
-        
-        let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
-        
-        let isGood = misspelledRange.location == NSNotFound
     }
-    
-    
 }
 
 #Preview {
